@@ -28,17 +28,11 @@ public:
 
 	void attract(sf::Vector2f positionToAttract, float multiplier);
 	void doFriction(float amount);
-	void moveIt(int screenWidht, int screenHeight,float dt);
+	void moveIt(int screenWidht, int screenHeight);
 	void drawPixel(sf::RenderWindow& window);
 
 
 };
-
-
-
-
-
-
 
 
 
