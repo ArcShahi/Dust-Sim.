@@ -4,11 +4,11 @@
 int main()
 {
 
-	const int screenWidht{ 1200 };
-	const int screenHeight{ 900 };
+	const int screenWidht{ 800 };
+	const int screenHeight{ 800 };
 
 
-	const auto dustCount{ 100'000 };
+	const auto dustCount{ 50'000 };
 
 	auto dust = std::make_unique<Particle[]>(dustCount);
 
@@ -19,6 +19,7 @@ int main()
 	}
 
 	sf::RenderWindow window(sf::VideoMode(screenWidht, screenHeight), "Dust Sim");
+	window.setFramerateLimit(120);
 	sf::Clock clock{};
 
 	while (window.isOpen())
@@ -46,26 +47,20 @@ int main()
 		{
 			dust[i].attract(mousePosition, 1.0f);
 			dust[i].doFriction(0.99f);
-			dust[i].moveIt(screenWidht, screenHeight,dt);
+			dust[i].moveIt(screenWidht, screenHeight);
 		}
 
 
 		window.clear();
 
 
-		
+
 		for (int i = 0; i < dustCount; i++)
 		{
 			dust[i].drawPixel(window);
 		}
 
 		window.display();
-
-
-
-
-
-
 
 
 
