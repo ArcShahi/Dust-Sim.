@@ -43,7 +43,7 @@ Particle::Particle(int screenWidht, int screenHeight)
 	sf::Uint8 Alpha = 150.f;
 
 	m_color = sf::Color{Red,Green,Blue,Alpha };*/
-	m_color = sf::Color{ 255,255,255,100 };
+	m_color = sf::Color{ 250,250,250,100 };
 
 	m_dust.setFillColor(m_color);
 
@@ -62,7 +62,7 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 
 void Particle::attract(sf::Vector2f positionToAttract, float multiplier)
 {
-	float distance = std::max(getDistance(positionToAttract), 0.9f);
+	float distance = std::max(getDistance(positionToAttract), 0.5f);
 
 	sf::Vector2f normal = getNormal(positionToAttract);
 
@@ -82,10 +82,10 @@ void Particle::doFriction(float amount)
 
 
 
-void Particle::moveIt(int screenWidth, int screenHeight, float dt)
+void Particle::moveIt(int screenWidth, int screenHeight)
 {
 	// Update position based on velocity and delta time
-	m_position += m_velocity * (dt*25.f);
+	m_position += m_velocity*2.0f;
 
 	// Wrap around the screen if particles move out of bounds
 	if (m_position.x < 0)
@@ -116,12 +116,3 @@ void Particle::drawPixel(sf::RenderWindow& window)
 
 	window.draw(m_dust);
 }
-
-
-
-
-
-
-
-
-
